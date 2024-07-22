@@ -87,8 +87,7 @@ DATABASES = {
   # Rads the .env file
 
 
-SECRET_KEY = env('SECRET_KEY', default='your_default_secret_key')
-DEBUG = env.bool('DEBUG', default=False)
+
 
 
 
