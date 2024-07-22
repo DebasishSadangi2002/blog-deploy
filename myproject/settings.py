@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import environ
+env = environ.Env()
+environ.Env.read_env()
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +27,8 @@ SECRET_KEY = 'django-insecure-jzr6^3%hi@z8hg*dy9ff)6&hz(^f5d)qae2r7l$cr)difr5l-t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
+
 
 
 # Application definition
@@ -76,16 +79,18 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+import dj_database_url
+from decouple import config
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ["PGDATABASE"],
-        'USER': os.environ["PGUSER"],
-        'PASSWORD': os.environ["PGPASSWORD"],
-        'HOST': os.environ["PGHOST"],
-        'PORT': os.environ["PGPORT"],
-    }
-}
+    'default': dj_database_url.parse('postgresql://production_mx0x_user:4suWhpBaGevMrR5JswkF61kYoVRbRU3L@dpg-cqf3ldpu0jms739nmip0-a.oregon-postgres.render.com/production_mx0x')
+} 
+  # Rads the .env file
+
+
+SECRET_KEY = env('SECRET_KEY', default='your_default_secret_key')
+DEBUG = env.bool('DEBUG', default=False)
 
 
 
