@@ -84,7 +84,7 @@ import dj_database_url
 from decouple import config
 
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://production_mx0x_user:4suWhpBaGevMrR5JswkF61kYoVRbRU3L@dpg-cqf3ldpu0jms739nmip0-a.oregon-postgres.render.com/production_mx0x')
+    'default': dj_database_url.parse('postgresql://production_mx0x_user:4suWhpBaGevMrR5JswkF61kYoVRbRU3L@dpg-cqf3ldpu0jms739nmip0-a/production_mx0x')
 } 
   # Rads the .env file
 
